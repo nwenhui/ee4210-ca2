@@ -117,7 +117,7 @@ void str_ser(int sockfd)
 			response[len] = date[i];
 			response[len+1] = '\0';
 		}
-		char response_end[] = " SGT\r\nContent-Type: text/html\r\n\r\n<html><head><title>CA2 S1</title></head><body><center><form action=\"\" method=\"GET\"><br><input type=\"text\" name=\"input\" value=\"\"><br><input type=\"submit\" value=\"Enter\"></form></center></body></html>";
+		char response_end[] = " SGT\r\nContent-Type: text/html\r\n\r\n<html><head><title>CA2 S1</title></head><body><center>Enter text here:<form action=\"\" method=\"GET\"><br><input type=\"text\" name=\"input\" value=\"\"><br><br><input type=\"submit\" value=\"Enter\"></form></center></body></html>";
 		for (int i = 0; i < strlen(response_end); i++) {
 			int len = strlen(response);
 			response[len] = response_end[i];
@@ -144,7 +144,7 @@ void str_ser(int sockfd)
 			response[len] = date[i];
 			response[len+1] = '\0';
 		}
-		char response_end[] = " SGT\r\nContent-Type: text/html\r\n\r\n";
+		char response_end[] = " SGT\r\nContent-Type: text/html\r\n\r\nYou typed: ";
 		for (int i = 0; i < strlen(response_end); i++) {
 			int len = strlen(response);
 			response[len] = response_end[i];
