@@ -1,6 +1,3 @@
-This example is to show how to transmit a short packet using TCP and UDP.
-Input a string (less than 50 characters) at the client end, you will receive the string at the server.
-
 This folder contains the server codes for AY20/21 S2 EE4210 CA2.
 
 ------------
