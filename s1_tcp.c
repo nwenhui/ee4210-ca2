@@ -170,7 +170,7 @@ void str_ser(int sockfd)
 	}
 	else
 	{
-		printf("No HTTP/1.1 requests received. \n");
+		printf("No HTTP/1.1 GET requests received. \n");
 	}
 }
 
