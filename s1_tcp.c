@@ -35,14 +35,12 @@ int main(int argc, char *argv[])
 	my_addr.sin_port = htons(port); //port number
 	my_addr.sin_addr.s_addr = htonl(INADDR_ANY);
 	bzero(&(my_addr.sin_zero), 8);
-	// ret = bind(sockfd, (struct sockaddr *) &my_addr, sizeof(struct sockaddr));                //bind socket
 	if (bind(sockfd, (struct sockaddr *)&my_addr, sizeof(struct sockaddr)) < 0)
 	{
 		printf("error in binding");
 		exit(1);
 	}
 
-	// ret = listen(sockfd, BACKLOG);                              //listen
 	if (listen(sockfd, BACKLOG) < 0)
 	{
 		printf("error in listening");
@@ -87,10 +85,6 @@ void str_ser(int sockfd)
 	}
 
 	recvs[n] = '\0';
-	// printf("the received string:\n%s\n", recvs);
-
-	// printf("hello");
-	// printf("Current local time and date: %s", getDate());
 
 	if (n < 14) // GET / HTTP/1.1 <- length = 14 (Base HTTP Request request line)
 	{
@@ -110,7 +104,6 @@ void str_ser(int sockfd)
 
 	if (recvs[5] == ' ')
 	{
-		printf("default \n");
 		char response[] = "HTTP/1.1 200 OK\r\nDate: ";
 		for (int i = 0; i < strlen(date); i++) {
 			int len = strlen(response);
@@ -124,7 +117,6 @@ void str_ser(int sockfd)
 			response[len+1] = '\0';
 		}
 	
-		// printf("RESPONSE: \n%s", response);
 		if ((n = send(sockfd, &response, strlen(response), 0)) == -1)
 		{
 			printf("send error!"); //send the ack
@@ -137,14 +129,13 @@ void str_ser(int sockfd)
 	}
 	else if (recvs[5] == '?')
 	{
-		printf("data received: %s\n", recvs);
 		char response[] = "HTTP/1.1 200 OK\r\nDate: ";
 		for (int i = 0; i < strlen(date); i++) {
 			int len = strlen(response);
 			response[len] = date[i];
 			response[len+1] = '\0';
 		}
-		char response_end[] = " SGT\r\nContent-Type: text/html\r\n\r\nYou typed: ";
+		char response_end[] = " SGT\r\nContent-Type: text/html\r\n\r\n<html><head><title>CA2 S1</title></head><body>You typed: ";
 		for (int i = 0; i < strlen(response_end); i++) {
 			int len = strlen(response);
 			response[len] = response_end[i];
@@ -157,7 +148,13 @@ void str_ser(int sockfd)
 			response[len] = recvs[i];
 			response[len+1] = '\0';
 		}
-		// printf("\nresponse: %s\n", response);
+		char response_end2[] = "</body></html>";
+		for (int i = 0; i < strlen(response_end2); i++) {
+			int len = strlen(response);
+			response[len] = response_end2[i];
+			response[len+1] = '\0';
+		}
+
 		if ((n = send(sockfd, &response, strlen(response), 0)) == -1)
 		{
 			printf("send error!"); //send the ack
