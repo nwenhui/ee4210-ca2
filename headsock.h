@@ -13,6 +13,4 @@
 #include <string.h>
 #include <time.h>
 
-#define MYTCP_PORT 4950
-#define MYUDP_PORT 5350
 #define MAXSIZE 4096

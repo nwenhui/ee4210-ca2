@@ -119,7 +119,7 @@ void str_ser(int sockfd)
 	
 		if ((n = send(sockfd, &response, strlen(response), 0)) == -1)
 		{
-			printf("send error!"); //send the ack
+			printf("send error!"); 
 			exit(1);
 		}
 		else
@@ -157,7 +157,7 @@ void str_ser(int sockfd)
 
 		if ((n = send(sockfd, &response, strlen(response), 0)) == -1)
 		{
-			printf("send error!"); //send the ack
+			printf("send error!"); 
 			exit(1);
 		}
 		else

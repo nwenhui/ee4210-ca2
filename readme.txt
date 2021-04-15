@@ -11,7 +11,7 @@ TCP server S1:
     gcc -o s1 s1_tcp.c
 3. To run the TCP server S1, use the command:
     ./s1 <port number>
-4. Open up a browser of your choice and go to localhost:<port number> to start a HTTP connection with server.
+4. Open up a browser of your choice on the same device and go to localhost:<port number> to start a HTTP connection with server.
 5. Enter something in the textbox and watch it appear after clicking enter!
 6. Close the client by closing the web browser.
 7. To close the server, use CTRL + C in the terminal window that the server is running on.
@@ -23,7 +23,7 @@ UDP server S2:
     gcc -o s2 s2_udp.c
 3. To run the TCP server S2, use the command:
     ./s2 <port number>
-4. Open another terminal/bash/command line window and use netcat to start a connection with the server using the command:
+4. Open another terminal/bash/command line window on the same device and use netcat to start a connection with the server using the command:
     nc -u 127.0.0.1 <port number>
 5. Once connected via netcat, send a basic HTTP/1.1 GET request to the server.  
     GET / HTTP/1.1

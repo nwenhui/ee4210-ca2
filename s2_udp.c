@@ -68,11 +68,10 @@ int main(int argc, char *argv[])
 			}
 
 			char response[] = "HTTP/1.1 200 OK\r\n\r\n<html><head><title>CA2 S2</title></head><body>EE-4210: Continuous assessment</body></html>";
-			printf("response: %s\n", response);
 
 			if ((n = sendto(sockfd, response, strlen(response), 0, (struct sockaddr *)&addr, slen)) == -1)
 			{
-				printf("send error!"); //send the ack
+				printf("send error!"); 
 				exit(1);
 			}
 			else
